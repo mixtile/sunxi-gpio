@@ -18,6 +18,9 @@ import os
 
 env = Environment()
 
+# for a31 platform
+env["CFLAGS"] = "-DSUNXI_A31"
+
 # sunxi_gpio
 sunxi_gpio_dst = "sunxi_gpio"
 sunxi_gpio_srcs = ["util_gpio.c", "sunxi_gpio.c"]
