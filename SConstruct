@@ -22,7 +22,7 @@ env = Environment()
 env["CFLAGS"] = "-DSUNXI_A31"
 
 # sunxi_gpio
-sunxi_gpio_dst = "sunxi_gpio"
+sunxi_gpio_dst = "sunxi-gpio"
 sunxi_gpio_srcs = ["util_gpio.c", "sunxi_gpio.c"]
 sunxi_gpio_libs = []
 
