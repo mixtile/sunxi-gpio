@@ -16,16 +16,11 @@
 
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
-
 LOCAL_SRC_FILES:= sunxi_gpio.c util_gpio.c
-
 LOCAL_MODULE:= sunxi-gpio 
-
 LOCAL_FORCE_STATIC_EXECUTABLE := true
-
+LOCAL_CFLAGS    := -DSUNXI_A31
 LOCAL_STATIC_LIBRARIES := libc 
-
 LOCAL_MODULE_PATH := $(TARGET_OUT_EXECUTABLES)
 LOCAL_MODULE_TAGS := debug
-
 include $(BUILD_EXECUTABLE)
