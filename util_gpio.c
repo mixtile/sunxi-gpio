@@ -230,7 +230,7 @@ int sunxi_gpio_enable_in(char io[16])
         return -1;
     }
 
-    UTIL_GPIO_DEBUG("sunxi gpio enable out %s \n", io);
+    UTIL_GPIO_DEBUG("sunxi gpio enable in %s \n", io);
 
     if('p' == io[0] || 'P' == io[0])
     {
@@ -243,15 +243,15 @@ int sunxi_gpio_enable_in(char io[16])
         {
             write(fd, "in", strlen("in"));
             close(fd);
-            UTIL_GPIO_DEBUG("sunxi gpio enable out %s success! \n", pdc->path_buf);
+            UTIL_GPIO_DEBUG("sunxi gpio enable in %s success! \n", pdc->path_buf);
             return 0;
         }
 
-         UTIL_GPIO_DEBUG("sunxi gpio enable out %s failed! \n", pdc->path_buf);
+         UTIL_GPIO_DEBUG("sunxi gpio enable in %s failed! \n", pdc->path_buf);
     }
     else
     {
-        fprintf(stderr, "sunxi gpio enable output failed, gpio is invalid: %s \n", io);
+        fprintf(stderr, "sunxi gpio enable in failed, gpio is invalid: %s \n", io);
     }
 
     return -1;
@@ -318,15 +318,15 @@ int sunxi_gpio_get_in(char io[16])
         {
             read(fd, buf, 4);
             close(fd);
-            UTIL_GPIO_DEBUG("sunxi gpio get in %s success! \n", pdc->path_buf);
+            UTIL_GPIO_DEBUG("sunxi gpio get in %s success %s! \n", pdc->path_buf, buf);
             return atoi(buf);
         }
 
-        UTIL_GPIO_DEBUG("sunxi gpio set out %s failed! \n", pdc->path_buf);
+        UTIL_GPIO_DEBUG("sunxi gpio get in %s failed! \n", pdc->path_buf);
     }
     else
     {
-        fprintf(stderr, "sunxi gpio set out failed, gpio is invalid: %s \n", io);
+        fprintf(stderr, "sunxi gpio get in failed, gpio is invalid: %s \n", io);
     }
 
     return -1;

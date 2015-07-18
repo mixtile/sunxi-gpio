@@ -102,16 +102,23 @@ int main(int argc, char **argv)
         }
     }
     
-    if(gpio_str && value_str)
+    if(gpio_str)
     {
         int get_value = -1;
         sunxi_gpio_init();
         switch(operation)
         {
             case 'w':
-                sunxi_gpio_export(gpio_str);
-                sunxi_gpio_enable_out(gpio_str);
-                sunxi_gpio_set_out(gpio_str, value);
+                if(value_str)
+                {
+                    sunxi_gpio_export(gpio_str);
+                    sunxi_gpio_enable_out(gpio_str);
+                    sunxi_gpio_set_out(gpio_str, value);
+                }
+                else
+                {
+                    fprintf(stderr, "sunxi_gpio set value %s failed, no value setup \n", gpio_str);
+                }
                 break;
             case 'r':
                 sunxi_gpio_export(gpio_str);
